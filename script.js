@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = new FormData(event.currentTarget);
     const subject = `Consulta GVR Consulting - ${data.get('empresa')}`;
     const body = `Nombre: ${data.get('nombre')}\nEmpresa: ${data.get('empresa')}\nCorreo: ${data.get('correo')}\nTeléfono: ${data.get('telefono') || 'No proporcionado'}\n\nNecesidad:\n${data.get('necesidad')}`;
-    window.location.href = `mailto:guillermo.villanueva@gvrconsulting.com.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@gvrconsulting.com.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 });
