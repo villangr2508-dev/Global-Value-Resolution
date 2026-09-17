@@ -1,135 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soporte Técnico Profesional | Soluciones de TI</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GVR Consulting: operación, soporte y continuidad tecnológica para empresas, oficinas y operaciones distribuidas.">
+  <meta name="theme-color" content="#07172f">
+  <title>GVR Consulting | Operación y soporte tecnológico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="GVR Consulting, inicio">
+        <span class="brand-mark" aria-hidden="true">GVR</span>
+        <span class="brand-name">Consulting</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú</button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="#soluciones">Soluciones</a>
+        <a href="#metodo">Cómo operamos</a>
+        <a href="#capacidades">Capacidades</a>
+        <a href="#contacto" class="nav-cta">Hablemos</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Navegación -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-microchip"></i>
-                <span>Global Value Resolution</span>
-            </div>
-            <nav class="nav-links">
-                <a href="#servicios">Servicios</a>
-                <a href="#proceso">Cómo trabajo</a>
-                <a href="#contacto" class="btn-nav">Solicitar Soporte</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Sección Principal (Hero) -->
+  <main id="contenido">
     <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="badge"><i class="fa-solid fa-circle-check"></i> Disponible para empresas y particulares</span>
-                <h1>Soluciones de Soporte Técnico y TI sin complicaciones</h1>
-                <p>Mantenimiento preventivo, correctivo, redes y optimización de equipos. Mantén tu operación funcionando al 100% con atención profesional y directa.</p>
-                <div class="hero-buttons">
-                    <a href="#contacto" class="btn btn-primary">Contáctame ahora <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
-                </div>
-            </div>
-            <div class="hero-card">
-                <div class="support-card">
-                    <i class="fa-solid fa-headset main-icon"></i>
-                    <h3>Atención Rápida</h3>
-                    <p>Diagnósticos eficientes y tiempos de respuesta ágiles para minimizar cualquier tiempo muerto.</p>
-                    <ul class="mini-list">
-                        <li><i class="fa-solid fa-check"></i> Soporte remoto y en sitio</li>
-                        <li><i class="fa-solid fa-check"></i> Garantía en reparaciones</li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Operación · Soporte · Continuidad</p>
+          <h1>Tecnología que mantiene tu operación en movimiento.</h1>
+          <p class="hero-lead">Diseñamos y operamos servicios de TI para organizaciones que necesitan responder rápido, reducir interrupciones y tener control sobre cada incidente.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contacto">Solicitar una consulta <span aria-hidden="true">→</span></a>
+            <a class="button button-ghost" href="#soluciones">Conocer soluciones</a>
+          </div>
+          <ul class="hero-tags" aria-label="Ámbitos de experiencia">
+            <li>Service Desk</li><li>Retail &amp; POS</li><li>Operación multisede</li>
+          </ul>
         </div>
+        <div class="operations-panel reveal" aria-label="Vista conceptual de operación GVR">
+          <div class="panel-top"><span>Centro de operación</span><span class="status"><i></i> En servicio</span></div>
+          <div class="signal-card signal-main"><small>Punto único de control</small><strong>GVR Service Desk</strong><span>Coordinación, comunicación y seguimiento</span></div>
+          <div class="signal-grid">
+            <div class="signal-card"><small>Prioridad</small><strong>Impacto primero</strong></div>
+            <div class="signal-card"><small>Cobertura</small><strong>Multisede</strong></div>
+            <div class="signal-card"><small>Visibilidad</small><strong>Métricas claras</strong></div>
+            <div class="signal-card"><small>Objetivo</small><strong>Continuidad</strong></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Servicios -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>¿Qué tipo de soporte necesitas?</h2>
-                <p>Soluciones técnicas adaptadas a tus necesidades tecnológicas.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3>Soporte a Equipos</h3>
-                    <p>Mantenimiento de hardware y software, optimización de velocidad, limpieza interna y cambios de componentes (SSD, RAM).</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box"><i class="fa-solid fa-network-wired"></i></div>
-                    <h3>Redes y Conectividad</h3>
-                    <p>Configuración de enrutadores, puntos de acceso Wi-Fi, resolución de problemas de internet y seguridad en redes locales.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Seguridad y Respaldo</h3>
-                    <p>Eliminación de virus, configuración de copias de seguridad (backup) automáticas y protección de información sensible.</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-box"><i class="fa-solid fa-building-user"></i></div>
-                    <h3>Mesa de Ayuda (Help Desk)</h3>
-                    <p>Atención a usuarios, gestión de incidencias y soporte técnico continuo para optimizar flujos de trabajo operativos.</p>
-                </div>
-            </div>
-        </div>
+    <section class="quick-links" aria-label="Accesos a soluciones">
+      <div class="container quick-grid">
+        <a href="#service-desk"><span>01</span><strong>Service Desk</strong><i>→</i></a>
+        <a href="#retail"><span>02</span><strong>Retail &amp; POS</strong><i>→</i></a>
+        <a href="#incidentes"><span>03</span><strong>Incidentes críticos</strong><i>→</i></a>
+        <a href="#continuidad"><span>04</span><strong>Continuidad</strong><i>→</i></a>
+      </div>
     </section>
 
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="contact">
-        <div class="container contact-container">
-            <div class="contact-info">
-                <h2>¿Listo para solucionar tu problema técnico?</h2>
-                <p>Escríbeme los detalles de lo que necesitas y te responderé con un diagnóstico o cotización estimada a la brevedad.</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>villangr2508@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+52 5561160820</span>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-form-wrapper">
-                <form id="supportForm" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" required placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" required placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Describe tu problema o servicio requerido</label>
-                        <textarea id="message" rows="4" required placeholder="Mi computadora está lenta / Necesito configurar una red..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">Enviar solicitud</button>
-                    <p id="formFeedback" class="form-feedback hidden">¡Mensaje enviado con éxito! Me pondré en contacto pronto.</p>
-                </form>
-            </div>
+    <section class="section intro" id="soluciones">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Soluciones empresariales</p>
+          <h2>Soporte diseñado alrededor del negocio.</h2>
+          <p>No vemos solamente tickets. Entendemos las ventas, usuarios, sucursales y procesos que dependen de la tecnología detrás de cada solicitud.</p>
         </div>
+        <div class="services-grid">
+          <article class="service-card reveal" id="service-desk"><span class="service-number">01</span><h3>Managed Service Desk</h3><p>Atención centralizada a usuarios, solicitudes e incidentes, con prioridades, escalamiento, seguimiento y comunicación de principio a fin.</p><ul><li>Soporte remoto</li><li>Gestión de SLA</li><li>Base de conocimiento</li></ul></article>
+          <article class="service-card reveal" id="retail"><span class="service-number">02</span><h3>Retail Technology Support</h3><p>Soporte especializado para sucursales y puntos de venta donde cada minuto de indisponibilidad tiene impacto operativo.</p><ul><li>POS y periféricos</li><li>Conectividad e impresión</li><li>Coordinación de proveedores</li></ul></article>
+          <article class="service-card reveal" id="incidentes"><span class="service-number">03</span><h3>Incident Management</h3><p>Coordinación de incidentes críticos con diagnóstico, responsables definidos, comunicación ejecutiva y recuperación ordenada.</p><ul><li>Priorización por impacto</li><li>Escalamiento técnico</li><li>Análisis posterior</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">04</span><h3>IT Operations</h3><p>Acompañamiento diario de dispositivos, identidades, aplicaciones, infraestructura y operación tecnológica distribuida.</p><ul><li>Altas, bajas y cambios</li><li>Activos y licencias</li><li>Operación multisede</li></ul></article>
+          <article class="service-card reveal" id="continuidad"><span class="service-number">05</span><h3>Business Continuity</h3><p>Procedimientos y alternativas operativas para mantener el negocio funcionando cuando un servicio tecnológico falla.</p><ul><li>Planes de contingencia</li><li>Roles y comunicación</li><li>Pruebas y mejora</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">06</span><h3>Technology Consulting</h3><p>Diagnóstico y evolución de procesos, indicadores, herramientas, automatización y modelos de atención de TI.</p><ul><li>Evaluación de madurez</li><li>KPIs y tableros</li><li>Optimización operativa</li></ul></article>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Soporte Técnico. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <section class="section method" id="metodo">
+      <div class="container method-grid">
+        <div class="method-copy reveal"><p class="eyebrow eyebrow-light">Nuestro método</p><h2>Del incidente al aprendizaje.</h2><p>Cada evento es una oportunidad para recuperar el servicio y fortalecer la operación.</p></div>
+        <ol class="process reveal">
+          <li><span>01</span><div><strong>Detectar</strong><p>Recibimos y contextualizamos la necesidad.</p></div></li>
+          <li><span>02</span><div><strong>Priorizar</strong><p>Evaluamos impacto, urgencia y alcance.</p></div></li>
+          <li><span>03</span><div><strong>Resolver</strong><p>Coordinamos acciones y especialistas.</p></div></li>
+          <li><span>04</span><div><strong>Comunicar</strong><p>Mantenemos informados a los involucrados.</p></div></li>
+          <li><span>05</span><div><strong>Aprender</strong><p>Documentamos para evitar recurrencias.</p></div></li>
+        </ol>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="section capabilities" id="capacidades">
+      <div class="container">
+        <div class="section-heading reveal"><p class="eyebrow">Una operación, múltiples ubicaciones</p><h2>Un solo punto de control.</h2><p>Integramos personas, procesos y proveedores para dar visibilidad a operaciones distribuidas en oficinas, retail, laboratorios y equipos remotos.</p></div>
+        <div class="control-map reveal">
+          <div class="map-node map-source"><small>Origen</small><strong>Usuarios · Sucursales · Oficinas</strong></div>
+          <div class="map-arrow" aria-hidden="true">→</div>
+          <div class="map-node map-core"><small>Coordinación</small><strong>GVR Service Desk</strong></div>
+          <div class="map-arrow" aria-hidden="true">→</div>
+          <div class="map-node map-target"><small>Resolución</small><strong>Apps · Infraestructura · Redes · Proveedores</strong></div>
+        </div>
+        <div class="value-grid reveal">
+          <div><strong>Disponibilidad</strong><span>Servicios críticos en operación.</span></div>
+          <div><strong>Respuesta</strong><span>Atención según impacto real.</span></div>
+          <div><strong>Resolución</strong><span>Responsabilidad hasta el cierre.</span></div>
+          <div><strong>Visibilidad</strong><span>Seguimiento e indicadores útiles.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal"><p class="eyebrow">Conversemos</p><h2>Hablemos de tu operación.</h2><p>Cuéntanos cómo funciona hoy tu soporte tecnológico y dónde están los principales retos. Prepararemos una conversación enfocada en tus necesidades reales.</p><div class="contact-person"><strong>Guillermo Villanueva</strong><span>GVR Consulting</span><a href="mailto:guillermo.villanueva@gvrconsulting.com.mx">guillermo.villanueva@gvrconsulting.com.mx</a><a href="tel:+525561160820">+52 55 6116 0820</a></div></div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row"><label>Nombre<input name="nombre" required autocomplete="name" placeholder="Tu nombre"></label><label>Empresa<input name="empresa" required autocomplete="organization" placeholder="Nombre de la empresa"></label></div>
+          <div class="form-row"><label>Correo corporativo<input type="email" name="correo" required autocomplete="email" placeholder="nombre@empresa.com"></label><label>Teléfono<input type="tel" name="telefono" autocomplete="tel" placeholder="+52"></label></div>
+          <label>¿Qué necesitas mejorar?<textarea name="necesidad" required rows="5" placeholder="Cuéntanos brevemente sobre tu operación y el reto que quieres resolver."></textarea></label>
+          <button class="button button-primary" type="submit">Preparar solicitud <span aria-hidden="true">→</span></button>
+          <p class="form-note">Al continuar se abrirá tu aplicación de correo con la información preparada.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="#inicio"><span class="brand-mark">GVR</span><span class="brand-name">Consulting</span></a><p>Operación, soporte y continuidad tecnológica.</p></div><div><strong>Contacto</strong><a href="mailto:guillermo.villanueva@gvrconsulting.com.mx">guillermo.villanueva@gvrconsulting.com.mx</a></div><div class="footer-bottom"><span>© <span id="year"></span> GVR Consulting</span><a href="#inicio">Volver arriba ↑</a></div></div></footer>
+  <script src="script.js"></script>
 </body>
 </html>
