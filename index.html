@@ -130,6 +130,29 @@
     </section>
   </main>
 
+
+  <aside class="gvr-chat" aria-label="Asistente virtual de GVR">
+    <button class="gvr-chat-toggle" id="chatToggle" type="button" aria-expanded="false" aria-controls="chatPanel">
+      <span class="gvr-chat-icon" aria-hidden="true">✦</span>
+      <span>Asistente GVR</span>
+    </button>
+    <section class="gvr-chat-panel" id="chatPanel" hidden>
+      <header class="gvr-chat-header">
+        <div><strong>Asistente GVR</strong><span><i></i> Disponible</span></div>
+        <button id="chatClose" type="button" aria-label="Cerrar asistente">×</button>
+      </header>
+      <div class="gvr-chat-messages" id="chatMessages" aria-live="polite">
+        <div class="chat-message assistant">Hola, soy el asistente virtual de GVR Consulting. ¿En qué podemos ayudarte con tu operación tecnológica?</div>
+      </div>
+      <form class="gvr-chat-form" id="chatForm">
+        <label class="sr-only" for="chatInput">Escribe tu mensaje</label>
+        <textarea id="chatInput" rows="1" maxlength="800" placeholder="Escribe tu mensaje…" required></textarea>
+        <button type="submit" aria-label="Enviar mensaje">Enviar</button>
+      </form>
+      <p class="gvr-chat-note">Asistente con IA. No compartas contraseñas ni información confidencial.</p>
+    </section>
+  </aside>
+
   <footer class="site-footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="#inicio"><span class="brand-mark">GVR</span><span class="brand-name">Consulting</span></a><p>Operación, soporte y continuidad tecnológica.</p></div><div><strong>Contacto</strong><a href="mailto:info@gvrconsulting.com.mx">info@gvrconsulting.com.mx</a></div><div class="footer-bottom"><span>© <span id="year"></span> GVR Consulting</span><a href="#inicio">Volver arriba ↑</a></div></div></footer>
   <script src="script.js"></script>
 </body>
