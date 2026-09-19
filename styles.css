@@ -400,3 +400,32 @@
   .hero-wordmark strong{font-size:clamp(1.85rem,9vw,2.7rem)!important}
   .hero-wordmark span{font-size:.72rem!important;line-height:1.35;white-space:normal!important}
 }
+
+/* Approved desktop artwork adapted for mobile */
+@media(max-width:900px){
+  .operations-panel{
+    position:relative!important;
+    width:100%!important;
+    max-width:760px!important;
+    min-height:0!important;
+    aspect-ratio:1.18/1!important;
+    margin:8px auto 0!important;
+    overflow:hidden!important;
+    border:0!important;
+    border-radius:0!important;
+    background:#06162d url("assets/gvr-hero-reference.png") 85% center/auto 100% no-repeat!important;
+    box-shadow:0 22px 55px rgba(0,0,0,.24)!important;
+  }
+  .operations-panel::before,.operations-panel::after{content:none!important;display:none!important}
+  .hero-brand-art{display:none!important}
+}
+@media(max-width:600px){
+  .operations-panel{
+    width:calc(100% + 28px)!important;
+    margin-left:-14px!important;
+    aspect-ratio:1/1.06!important;
+    background-position:83% center!important;
+    background-size:auto 100%!important;
+    box-shadow:0 18px 42px rgba(0,0,0,.22)!important;
+  }
+}
