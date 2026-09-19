@@ -328,7 +328,7 @@
   width:min(72%,470px);
   aspect-ratio:1;
   margin:0 auto -12px;
-  background:url("assets/gvr-mark.png") center/contain no-repeat;
+  background:url("assets/gvr-mark-navy.png") center/contain no-repeat;
   filter:drop-shadow(0 0 20px rgba(37,145,255,.22));
   position:relative;
   z-index:8;
