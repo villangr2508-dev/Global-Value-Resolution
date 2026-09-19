@@ -434,3 +434,49 @@
 @media(max-width:600px){
   .operations-panel{background-position:92% center!important}
 }
+
+
+/* Floating back-to-top button — desktop only */
+.back-to-top{display:none}
+@media(min-width:901px){
+  .back-to-top{
+    position:fixed;
+    left:24px;
+    bottom:24px;
+    z-index:45;
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(98,230,214,.55);
+    border-radius:50%;
+    background:linear-gradient(145deg,#1268ff,#0756df);
+    color:#fff;
+    font-size:1.45rem;
+    line-height:1;
+    text-decoration:none;
+    box-shadow:0 12px 30px rgba(7,23,47,.3),0 0 18px rgba(18,104,255,.2);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(12px);
+    transition:opacity .25s ease,transform .25s ease,visibility .25s ease,background .25s ease;
+  }
+  .back-to-top.is-visible{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+  }
+  .back-to-top:hover{
+    background:linear-gradient(145deg,#2180ff,#0b5fe8);
+    transform:translateY(-3px);
+  }
+  .back-to-top:focus-visible{
+    outline:3px solid #62e6d6;
+    outline-offset:4px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .back-to-top{transition:none!important}
+}
