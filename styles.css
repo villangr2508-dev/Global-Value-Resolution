@@ -334,3 +334,14 @@
   z-index:8;
 }
 @media(max-width:600px){.hero-brand-art::before{width:min(78%,360px)}}
+
+/* Exact desktop composition from the approved GVR reference */
+@media(min-width:901px){
+  .hero{
+    min-height:0!important;
+    aspect-ratio:1862/845;
+    background:#06162d url("assets/gvr-hero-reference.png") center/100% 100% no-repeat!important;
+  }
+  .hero::before,.hero::after{content:none!important;display:none!important}
+  .hero-grid{position:absolute!important;inset:0!important;opacity:0!important;pointer-events:none!important}
+}
