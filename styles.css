@@ -313,3 +313,9 @@
   .hero-wordmark strong{font-size:clamp(2rem,10.5vw,3rem)}
   .hero-wordmark span{font-size:.72rem;letter-spacing:.09em;white-space:normal}
 }
+
+/* Keep the transparent brand artwork above legacy decorative layers */
+.hero-grid{z-index:2!important}
+.operations-panel{z-index:4!important}
+.hero-brand-art{position:relative!important;z-index:6!important}
+.hero-brand-art img,.hero-wordmark{position:relative!important;z-index:7!important}
