@@ -162,7 +162,7 @@
   isolation:isolate;
   min-height:clamp(720px,47vw,880px);
   overflow:hidden;
-  background:#06162d url("assets/gvr-hero-circuitry.png") center center/cover no-repeat;
+  background:#06162d url("assets/gvr-hero-circuitry-v2.png") center center/cover no-repeat;
 }
 .hero::before{
   content:"";
