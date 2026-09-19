@@ -345,3 +345,18 @@
   .hero::before,.hero::after{content:none!important;display:none!important}
   .hero-grid{position:absolute!important;inset:0!important;opacity:0!important;pointer-events:none!important}
 }
+
+/* Clickable areas for approved desktop hero */
+.hero-reference-actions{display:none}
+@media(min-width:901px){
+  .hero-reference-actions{display:block;position:absolute;inset:0;z-index:20}
+  .hero-reference-action{position:absolute;display:block;border-radius:2px}
+  .hero-reference-consult{left:4.55%;top:83.55%;width:15.75%;height:7.95%}
+  .hero-reference-solutions{left:21.65%;top:83.55%;width:13.55%;height:7.95%}
+  .hero-reference-action:focus-visible{
+    outline:3px solid #62e6d6;
+    outline-offset:4px;
+    box-shadow:0 0 0 7px rgba(98,230,214,.22)
+  }
+  .hero-reference-action:hover{background:rgba(255,255,255,.045)}
+}
