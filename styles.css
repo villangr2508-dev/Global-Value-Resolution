@@ -319,3 +319,18 @@
 .operations-panel{z-index:4!important}
 .hero-brand-art{position:relative!important;z-index:6!important}
 .hero-brand-art img,.hero-wordmark{position:relative!important;z-index:7!important}
+
+/* Render the complete transparent mark as a dedicated brand layer */
+.hero-brand-art img{display:none!important}
+.hero-brand-art::before{
+  content:"";
+  display:block;
+  width:min(72%,470px);
+  aspect-ratio:1;
+  margin:0 auto -12px;
+  background:url("assets/gvr-mark.png") center/contain no-repeat;
+  filter:drop-shadow(0 0 20px rgba(37,145,255,.22));
+  position:relative;
+  z-index:8;
+}
+@media(max-width:600px){.hero-brand-art::before{width:min(78%,360px)}}
