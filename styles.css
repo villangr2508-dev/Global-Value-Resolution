@@ -154,3 +154,161 @@
   box-shadow:0 0 0 55px rgba(18,104,255,.018),0 0 80px rgba(18,104,255,.12);
 }
 .hero .hero-accent{color:#3291ff!important}
+
+
+/* Exact GVR reference hero — 2026-09-19 */
+.hero{
+  position:relative;
+  isolation:isolate;
+  min-height:clamp(720px,47vw,880px);
+  overflow:hidden;
+  background:#06162d url("assets/gvr-hero-circuitry.png") center center/cover no-repeat;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 73% 40%,rgba(15,90,154,.18),transparent 34%),
+    linear-gradient(90deg,rgba(4,16,35,.12) 0%,rgba(4,16,35,0) 52%);
+  pointer-events:none;
+}
+.hero-grid{
+  min-height:inherit;
+  display:grid;
+  grid-template-columns:minmax(0,.94fr) minmax(500px,1.06fr);
+  gap:2.25rem;
+  align-items:center;
+  padding:54px 0 68px;
+}
+.hero-copy{max-width:760px;position:relative;z-index:3}
+.hero .eyebrow{
+  margin:0 0 25px;
+  color:#7cc2ff;
+  font-size:.86rem;
+  line-height:1;
+  font-weight:600;
+  letter-spacing:.38em;
+}
+.hero .eyebrow::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:3px;
+  margin-top:26px;
+  background:#337dff;
+  box-shadow:0 0 14px rgba(51,125,255,.55);
+}
+.hero h1{
+  max-width:760px;
+  margin:0;
+  color:#f7f9fd;
+  font-size:clamp(4.2rem,5.35vw,6.35rem);
+  font-weight:700;
+  line-height:.96;
+  letter-spacing:-.062em;
+  text-wrap:balance;
+  text-shadow:0 2px 22px rgba(0,0,0,.16);
+}
+.hero h1 .hero-accent{
+  display:inline-block;
+  color:#3291ff!important;
+  background:linear-gradient(180deg,#39a3ff 0%,#1f70ef 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-lead{
+  max-width:715px;
+  margin:30px 0 0;
+  color:#d2dbea;
+  font-size:clamp(1rem,1.23vw,1.26rem);
+  line-height:1.48;
+}
+.hero-actions{display:flex;gap:24px;margin-top:36px}
+.hero .button{min-height:66px;padding:0 34px;font-size:.96rem;border-radius:2px}
+.hero .button-primary{
+  background:linear-gradient(135deg,#1f63ed,#2f77ff);
+  box-shadow:0 14px 32px rgba(22,104,255,.24);
+}
+.hero .button-ghost{border-color:#8191a8;color:#fff;background:rgba(2,15,35,.28)}
+.hero .button-ghost:hover{border-color:#54b7ff;background:rgba(13,62,108,.5)}
+.hero-tags{display:none!important}
+.operations-panel{
+  position:relative!important;
+  min-height:620px!important;
+  width:100%!important;
+  aspect-ratio:auto!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.operations-panel::before,.operations-panel::after{content:none!important;display:none!important}
+.operations-panel>*{display:block}
+.hero-brand-art{
+  width:min(100%,660px);
+  display:grid!important;
+  justify-items:center;
+  transform:translate(2.5%,1%);
+  filter:drop-shadow(0 24px 48px rgba(0,0,0,.24));
+}
+.hero-brand-art img{
+  display:block;
+  width:min(72%,470px);
+  height:auto;
+  margin:0 auto -12px;
+  filter:drop-shadow(0 0 20px rgba(37,145,255,.22));
+}
+.hero-wordmark{text-align:left;width:min(76%,500px)}
+.hero-wordmark strong{
+  display:block;
+  color:#bfcde0;
+  font-size:clamp(2.35rem,3vw,3.7rem);
+  font-weight:500;
+  line-height:.98;
+  letter-spacing:.025em;
+  text-transform:uppercase;
+  text-shadow:0 2px 0 #eef5ff,0 4px 14px rgba(0,0,0,.45);
+}
+.hero-wordmark span{
+  display:block;
+  margin-top:9px;
+  color:#7f9bc0;
+  font-size:clamp(.86rem,1.23vw,1.35rem);
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+@media(max-width:1120px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(420px,.9fr);gap:1rem}
+  .hero h1{font-size:clamp(3.8rem,5.8vw,5.2rem)}
+  .operations-panel{min-height:550px!important}
+}
+@media(max-width:900px){
+  .hero{min-height:auto;background-position:62% center}
+  .hero-grid{grid-template-columns:1fr;gap:12px;padding:74px 0 64px}
+  .hero-copy{max-width:720px}
+  .hero h1{font-size:clamp(3.5rem,10vw,5.6rem)}
+  .hero-lead{max-width:650px}
+  .operations-panel{min-height:560px!important}
+  .hero-brand-art{transform:none}
+}
+@media(max-width:600px){
+  .hero{background-position:68% center}
+  .hero-grid{padding:56px 0 48px}
+  .hero .eyebrow{font-size:.7rem;letter-spacing:.25em}
+  .hero h1{font-size:clamp(3rem,15vw,4.45rem);line-height:.98}
+  .hero-lead{font-size:1rem;line-height:1.55;margin-top:24px}
+  .hero-actions{flex-direction:column;gap:12px;margin-top:28px}
+  .hero .button{width:100%;min-height:58px}
+  .operations-panel{min-height:430px!important}
+  .hero-brand-art img{width:min(78%,360px)}
+  .hero-wordmark{width:min(86%,390px)}
+  .hero-wordmark strong{font-size:clamp(2rem,10.5vw,3rem)}
+  .hero-wordmark span{font-size:.72rem;letter-spacing:.09em;white-space:normal}
+}
