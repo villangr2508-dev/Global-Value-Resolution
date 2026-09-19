@@ -53,3 +53,49 @@
 .button-ai-demo:hover{background:#8bf0e4}
 @media(max-width:900px){.web-ai-grid{grid-template-columns:1fr;gap:3rem}}
 @media(max-width:600px){.web-ai-flow i{display:none}.web-ai-flow span{flex:1 1 45%;text-align:center}}
+
+
+/* Tarjetas de servicios interactivas */
+.service-card{
+  overflow:hidden;
+  isolation:isolate;
+  border-radius:18px;
+  transform-style:preserve-3d;
+  will-change:transform,box-shadow;
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),box-shadow .38s ease,border-color .38s ease,background .38s ease,color .38s ease;
+}
+.service-card::after{
+  content:"";
+  position:absolute;
+  inset:-45%;
+  z-index:-1;
+  background:radial-gradient(circle at 50% 50%,rgba(98,230,214,.34),rgba(18,104,255,.12) 32%,transparent 62%);
+  opacity:0;
+  transform:scale(.65) rotate(-12deg);
+  transition:opacity .38s ease,transform .55s ease;
+  pointer-events:none;
+}
+.service-card:hover{
+  transform:translateY(-14px) scale(1.025) rotateX(1.2deg);
+  background:linear-gradient(145deg,#1268ff 0%,#0756df 100%);
+  border-color:#62e6d6;
+  color:#fff;
+  box-shadow:0 26px 55px rgba(18,104,255,.28),0 0 0 2px rgba(98,230,214,.35),0 0 28px rgba(98,230,214,.28);
+}
+.service-card:hover::after{opacity:1;transform:scale(1.05) rotate(10deg)}
+.service-card:hover .service-number{color:var(--cyan)}
+.service-card:hover p,.service-card:hover li{color:#fff}
+.service-card:hover ul{border-top-color:rgba(255,255,255,.3)}
+.service-card:hover li:before{color:var(--cyan)}
+.service-card h3,.service-card p,.service-card ul,.service-card .service-number{transition:color .3s ease,border-color .3s ease}
+.service-card:focus-within{outline:3px solid rgba(18,104,255,.3);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){
+  .service-card,.service-card::after{transition:none}
+  .service-card:hover{transform:none}
+}
+@media(hover:none){
+  .service-card:hover{transform:none;background:#fff;border-color:var(--line);color:var(--ink);box-shadow:none}
+  .service-card:hover p{color:var(--muted)}
+  .service-card:hover li{color:var(--ink)}
+  .service-card:hover ul{border-top-color:var(--line)}
+}
