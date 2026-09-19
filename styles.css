@@ -480,3 +480,49 @@
 @media(prefers-reduced-motion:reduce){
   .back-to-top{transition:none!important}
 }
+
+
+/* Coherent vertical operations flow on tablets and mobile */
+@media(max-width:900px){
+  .control-map{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    width:100%;
+  }
+  .control-map .map-node{
+    width:100%;
+    min-height:124px;
+    padding:1.5rem;
+  }
+  .control-map .map-arrow{
+    width:100%;
+    height:64px;
+    display:grid;
+    place-items:center;
+    align-self:auto;
+    transform:none;
+    font-size:0;
+    line-height:1;
+    color:var(--blue);
+  }
+  .control-map .map-arrow::before{
+    content:"↓";
+    display:block;
+    font-size:2rem;
+    font-weight:500;
+    line-height:1;
+  }
+}
+@media(max-width:600px){
+  .control-map .map-node{
+    min-height:112px;
+    padding:1.35rem;
+  }
+  .control-map .map-node strong{
+    font-size:clamp(1rem,4.8vw,1.22rem);
+    line-height:1.45;
+    overflow-wrap:anywhere;
+  }
+  .control-map .map-arrow{height:58px}
+}
