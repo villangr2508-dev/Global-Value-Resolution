@@ -429,3 +429,8 @@
     box-shadow:0 18px 42px rgba(0,0,0,.22)!important;
   }
 }
+
+/* Mobile logo centering adjustment */
+@media(max-width:600px){
+  .operations-panel{background-position:92% center!important}
+}
