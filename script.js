@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTop?.classList.toggle('is-visible', window.scrollY > 500);
   };
   window.addEventListener('scroll', updateBackToTop, { passive: true });
+  backToTop?.addEventListener('click', event => {
+    event.preventDefault();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
   updateBackToTop();
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
