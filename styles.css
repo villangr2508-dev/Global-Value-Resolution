@@ -136,3 +136,21 @@
 .operations-panel:after{content:"";position:absolute;width:92%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(57,151,255,.22);box-shadow:0 0 0 55px rgba(18,104,255,.025),0 0 0 110px rgba(18,104,255,.018),0 0 90px rgba(18,104,255,.12);background:radial-gradient(circle,rgba(19,78,132,.28),rgba(7,23,47,.12) 54%,transparent 72%);z-index:1}
 @media(max-width:900px){.operations-panel{min-height:470px}}
 @media(max-width:600px){.operations-panel{min-height:350px}.operations-panel:before{width:82%}}
+
+/* Hero logo integration fix */
+.operations-panel:before{
+  width:min(92%,520px);
+  border-radius:0;
+  background-size:145% auto;
+  mix-blend-mode:multiply;
+  filter:saturate(1.35) brightness(1.35) contrast(1.12);
+  opacity:1;
+  box-shadow:none;
+}
+.operations-panel:after{
+  width:96%;
+  border-color:rgba(57,151,255,.18);
+  background:radial-gradient(circle,rgba(18,104,255,.15) 0,rgba(7,23,47,.05) 48%,transparent 70%);
+  box-shadow:0 0 0 55px rgba(18,104,255,.018),0 0 80px rgba(18,104,255,.12);
+}
+.hero .hero-accent{color:#3291ff!important}
