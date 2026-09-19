@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     menuButton?.setAttribute('aria-expanded', 'false');
   }));
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const backToTop = document.getElementById('backToTop');
+  const updateBackToTop = () => {
+    backToTop?.classList.toggle('is-visible', window.scrollY > 500);
+  };
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
   }), { threshold: 0.12 });
