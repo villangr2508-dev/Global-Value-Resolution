@@ -127,3 +127,12 @@
 .security-panel span{padding:.85rem;border:1px solid #294668;background:#132c50;color:#c8d5e5;font-size:.82rem}
 @media(max-width:900px){.security-grid{grid-template-columns:1fr;gap:3rem}}
 @media(max-width:600px){.security-panel{grid-template-columns:1fr}}
+
+/* Hero integrated brand */
+.hero{background:radial-gradient(circle at 76% 42%,#0b315e 0,#0a2344 22%,#07172f 58%,#051126 100%)}
+.hero-accent{color:#3291ff}
+.operations-panel{position:relative;min-height:520px;aspect-ratio:auto;background:transparent!important;border:0!important;border-radius:50%;box-shadow:none!important;display:grid;place-items:center;overflow:visible}
+.operations-panel:before{content:"";position:absolute;width:min(82%,440px);aspect-ratio:1;border-radius:50%;background:url("assets/gvr-logo.jpg") center 27%/145% auto no-repeat;mix-blend-mode:screen;filter:contrast(1.12) saturate(1.18);opacity:.96;box-shadow:0 0 80px rgba(18,104,255,.12);z-index:2}
+.operations-panel:after{content:"";position:absolute;width:92%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(57,151,255,.22);box-shadow:0 0 0 55px rgba(18,104,255,.025),0 0 0 110px rgba(18,104,255,.018),0 0 90px rgba(18,104,255,.12);background:radial-gradient(circle,rgba(19,78,132,.28),rgba(7,23,47,.12) 54%,transparent 72%);z-index:1}
+@media(max-width:900px){.operations-panel{min-height:470px}}
+@media(max-width:600px){.operations-panel{min-height:350px}.operations-panel:before{width:82%}}
