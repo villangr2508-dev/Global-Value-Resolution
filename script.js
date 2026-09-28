@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     navigation.classList.remove('open');
     menuButton?.setAttribute('aria-expanded', 'false');
   }));
-  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
   const backToTop = document.getElementById('backToTop');
-  const updateBackToTop = () => {
-    backToTop?.classList.toggle('is-visible', window.scrollY > 500);
-  };
+  const updateBackToTop = () => backToTop?.classList.toggle('is-visible', window.scrollY > 500);
   window.addEventListener('scroll', updateBackToTop, { passive: true });
   backToTop?.addEventListener('click', event => {
     event.preventDefault();
@@ -22,22 +22,37 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
   updateBackToTop();
+
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
   }), { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
   document.getElementById('contactForm')?.addEventListener('submit', event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const subject = `Consulta GVR Consulting - ${data.get('empresa')}`;
-    const body = `Nombre: ${data.get('nombre')}\nEmpresa: ${data.get('empresa')}\nCorreo: ${data.get('correo')}\nTeléfono: ${data.get('telefono') || 'No proporcionado'}\n\nNecesidad:\n${data.get('necesidad')}`;
+    const clean = value => String(value ?? '').replace(/[\r\n]+/g, ' ').trim().slice(0, 1000);
+    const nombre = clean(data.get('nombre')).slice(0, 120);
+    const empresa = clean(data.get('empresa')).slice(0, 120);
+    const correo = clean(data.get('correo')).slice(0, 254);
+    const telefono = clean(data.get('telefono')).slice(0, 40);
+    const necesidad = clean(data.get('necesidad'));
+    const subject = `Consulta GVR Consulting - ${empresa}`;
+    const body = `Nombre: ${nombre}\nEmpresa: ${empresa}\nCorreo: ${correo}\nTeléfono: ${telefono || 'No proporcionado'}\n\nNecesidad:\n${necesidad}`;
     window.location.href = `mailto:info@gvrconsulting.com.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const endpoint = 'https://gvr-asistente.villangr2508.workers.dev/chat';
+  const MAX_MESSAGE_LENGTH = 800;
+  const MAX_HISTORY = 10;
+  const REQUEST_TIMEOUT_MS = 20000;
+  const MIN_REQUEST_INTERVAL_MS = 1200;
+
   const toggle = document.getElementById('chatToggle');
   const panel = document.getElementById('chatPanel');
   const close = document.getElementById('chatClose');
@@ -45,58 +60,90 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('chatInput');
   const messagesBox = document.getElementById('chatMessages');
   const history = [];
+  let lastRequestAt = 0;
+
+  if (!toggle || !panel || !form || !input || !messagesBox) return;
 
   const setOpen = open => {
     panel.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
     if (open) setTimeout(() => input.focus(), 50);
   };
+
   const addMessage = (text, role, extraClass = '') => {
     const item = document.createElement('div');
     item.className = ['chat-message', role, extraClass].filter(Boolean).join(' ');
-    item.textContent = text;
+    // Never render assistant/user content as HTML.
+    item.textContent = String(text ?? '');
     messagesBox.appendChild(item);
     messagesBox.scrollTop = messagesBox.scrollHeight;
     return item;
   };
 
-  toggle?.addEventListener('click', () => setOpen(panel.hidden));
+  toggle.addEventListener('click', () => setOpen(panel.hidden));
   close?.addEventListener('click', () => setOpen(false));
-  input?.addEventListener('keydown', event => {
+  input.addEventListener('keydown', event => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       form.requestSubmit();
     }
   });
 
-  form?.addEventListener('submit', async event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
-    const text = input.value.trim();
+    const text = input.value.trim().slice(0, MAX_MESSAGE_LENGTH);
     if (!text) return;
+
+    const now = Date.now();
+    if (now - lastRequestAt < MIN_REQUEST_INTERVAL_MS) return;
+    lastRequestAt = now;
 
     addMessage(text, 'user');
     history.push({ role: 'user', content: text });
+    if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
     input.value = '';
-    const submit = form.querySelector('button');
-    submit.disabled = true;
+
+    const submit = form.querySelector('button[type="submit"]');
+    if (submit) submit.disabled = true;
     const typing = addMessage('Escribiendo…', 'assistant', 'typing');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history.slice(-10) })
+        mode: 'cors',
+        credentials: 'omit',
+        cache: 'no-store',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ messages: history.slice(-MAX_HISTORY) }),
+        signal: controller.signal
       });
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) throw new Error('Respuesta inválida');
       const data = await response.json();
-      if (!response.ok || !data.reply) throw new Error(data.error || 'Respuesta no disponible');
+      if (!response.ok || typeof data.reply !== 'string' || !data.reply.trim()) {
+        throw new Error('Respuesta no disponible');
+      }
+
       typing.remove();
-      addMessage(data.reply, 'assistant');
-      history.push({ role: 'assistant', content: data.reply });
+      const reply = data.reply.trim().slice(0, 5000);
+      addMessage(reply, 'assistant');
+      history.push({ role: 'assistant', content: reply });
+      if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
     } catch (error) {
-      typing.textContent = 'No pude responder en este momento. También puedes escribirnos por WhatsApp o a info@gvrconsulting.com.mx.';
+      typing.textContent = error?.name === 'AbortError'
+        ? 'La respuesta tardó demasiado. Intenta nuevamente en unos segundos.'
+        : 'No pude responder en este momento. También puedes escribirnos por WhatsApp o a info@gvrconsulting.com.mx.';
       typing.classList.remove('typing');
     } finally {
-      submit.disabled = false;
+      clearTimeout(timeout);
+      if (submit) submit.disabled = false;
       input.focus();
     }
   });
