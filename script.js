@@ -148,3 +148,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Busuanzi stores the cumulative page-view count remotely for the canonical domain.
+// Count only production loads; local previews must not change the public total.
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hostname !== 'gvrconsulting.com.mx') return;
+  const counter = document.getElementById('visitCounter');
+  const value = document.getElementById('visitCount');
+  if (!counter || !value) return;
+
+  const callback = `gvrVisitCount_${Math.random().toString(36).slice(2)}`;
+  const script = document.createElement('script');
+  let timeout;
+  const cleanup = () => {
+    clearTimeout(timeout);
+    script.remove();
+    delete window[callback];
+  };
+  window[callback] = data => {
+    if (Number.isSafeInteger(data?.site_pv) && data.site_pv > 0) {
+      value.textContent = new Intl.NumberFormat('es-MX').format(data.site_pv);
+      counter.hidden = false;
+    }
+    cleanup();
+  };
+  script.src = `https://busuanzi.ibruce.info/busuanzi?jsonpCallback=${callback}`;
+  script.async = true;
+  // Send only the site origin, never query strings or form contents.
+  script.referrerPolicy = 'origin';
+  script.onerror = cleanup;
+  timeout = setTimeout(cleanup, 8000);
+  document.head.appendChild(script);
+});

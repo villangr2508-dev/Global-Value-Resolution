@@ -526,3 +526,8 @@
   }
   .control-map .map-arrow{height:58px}
 }
+
+/* Keep the public visit count discreet and readable on narrow screens. */
+.footer-bottom{flex-wrap:wrap;gap:.75rem 1.5rem}
+.visit-counter{font-size:.8125rem;color:#aebccf;font-variant-numeric:tabular-nums}
+.visit-counter[hidden]{display:none}

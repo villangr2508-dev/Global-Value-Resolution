@@ -49,3 +49,9 @@ If a credential is ever committed, deleting it from the current branch is not su
 ## Reporting
 
 Security concerns should be reported privately to GVR Consulting rather than opened as public issues when they could expose an exploitable weakness.
+
+## Public visit counter
+
+The footer uses Busuanzi's HTTPS JSONP endpoint, which persists page views by site origin. The integration sends only the canonical origin as referrer, validates a positive integer and renders the number with `textContent`. It runs only on `gvrconsulting.com.mx` and hides the counter if the provider is unavailable. No form or chat data is sent to the counter provider. This is an approximate page-view total, not unique people or audited analytics; reloads and automated traffic can affect it. Counting begins with installation and cannot recover previous visits.
+
+If enforcing CSP, allow `https://busuanzi.ibruce.info` in `script-src` for the JSONP response. JSONP executes third-party JavaScript; do not expand this allowlist to arbitrary hosts. A future first-party backend counter would remove this dependency.
