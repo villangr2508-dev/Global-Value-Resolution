@@ -531,3 +531,16 @@
 .footer-bottom{flex-wrap:wrap;gap:.75rem 1.5rem}
 .visit-counter{font-size:.8125rem;color:#aebccf;font-variant-numeric:tabular-nums}
 .visit-counter[hidden]{display:none}
+
+/* Customer support portal */
+.support-portal{background:#fff}
+.support-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;margin-bottom:2rem}
+.support-heading>div{max-width:760px}
+.support-heading p:last-child{color:var(--muted)}
+.support-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0 0}
+.support-actions .button-ghost{color:var(--ink);border-color:var(--line)}
+.support-frame-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+.support-frame-wrap[hidden]{display:none}
+.support-frame{display:block;width:100%;height:840px;border:0;background:#07172f}
+.support-note{font-size:.875rem;color:var(--muted);margin:1rem 0 0}
+@media(max-width:600px){.support-heading{display:block}.support-actions{flex-direction:column}.support-actions .button{width:100%}.support-frame{height:780px}}

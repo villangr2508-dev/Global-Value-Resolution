@@ -180,3 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
   timeout = setTimeout(cleanup, 8000);
   document.head.appendChild(script);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('supportPortalToggle');
+  const wrap = document.getElementById('supportPortalWrap');
+  const frame = document.getElementById('supportPortalFrame');
+  if (!toggle || !wrap || !frame) return;
+  toggle.addEventListener('click', () => {
+    const open = wrap.hidden;
+    if (open && !frame.getAttribute('src')) frame.src = frame.dataset.src;
+    wrap.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Ocultar portal' : 'Abrir portal aquí';
+  });
+});
