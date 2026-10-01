@@ -157,27 +157,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const value = document.getElementById('visitCount');
   if (!counter || !value) return;
 
+  const cacheKey = 'gvr-site-pageviews';
+  const showCount = count => {
+    value.textContent = new Intl.NumberFormat('es-MX').format(count);
+    counter.removeAttribute('title');
+  };
+  let cachedCount;
+  try {
+    cachedCount = Number(localStorage.getItem(cacheKey));
+    if (Number.isSafeInteger(cachedCount) && cachedCount > 0) {
+      showCount(cachedCount);
+      counter.title = 'Último total disponible; actualizando.';
+    }
+  } catch {}
+
   const callback = `gvrVisitCount_${Math.random().toString(36).slice(2)}`;
   const script = document.createElement('script');
   let timeout;
   const cleanup = () => {
     clearTimeout(timeout);
     script.remove();
-    delete window[callback];
+    // A delayed JSONP response may still arrive after the timeout.
+    window[callback] = () => {};
   };
-  window[callback] = data => {
-    if (Number.isSafeInteger(data?.site_pv) && data.site_pv > 0) {
-      value.textContent = new Intl.NumberFormat('es-MX').format(data.site_pv);
-      counter.hidden = false;
+  const unavailable = () => {
+    if (!Number.isSafeInteger(cachedCount) || cachedCount <= 0) {
+      value.textContent = 'no disponible';
+      counter.title = 'El servicio de visitas no respondió. Intenta más tarde.';
     }
     cleanup();
   };
+  window[callback] = data => {
+    if (Number.isSafeInteger(data?.site_pv) && data.site_pv > 0) {
+      showCount(data.site_pv);
+      try { localStorage.setItem(cacheKey, String(data.site_pv)); } catch {}
+      cleanup();
+    } else {
+      unavailable();
+    }
+  };
   script.src = `https://busuanzi.ibruce.info/busuanzi?jsonpCallback=${callback}`;
   script.async = true;
-  // Send only the site origin, never query strings or form contents.
+  // Preserve the existing counter's canonical domain and cumulative total.
   script.referrerPolicy = 'origin';
-  script.onerror = cleanup;
-  timeout = setTimeout(cleanup, 8000);
+  script.onerror = unavailable;
+  timeout = setTimeout(unavailable, 25000);
   document.head.appendChild(script);
 });
 
