@@ -544,3 +544,7 @@
 .support-frame{display:block;width:100%;height:840px;border:0;background:#07172f}
 .support-note{font-size:.875rem;color:var(--muted);margin:1rem 0 0}
 @media(max-width:600px){.support-heading{display:block}.support-actions{flex-direction:column}.support-actions .button{width:100%}.support-frame{height:780px}}
+
+/* Keep visits clear of the floating assistant at the very bottom. */
+.footer-bottom{justify-content:flex-start;padding-bottom:3.5rem}
+@media(max-width:600px){.footer-bottom{flex-direction:column;align-items:flex-start;gap:.35rem;padding-bottom:4rem}}
